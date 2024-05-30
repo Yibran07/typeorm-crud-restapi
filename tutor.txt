@@ -1,0 +1,84 @@
+$ cd typeorm-crud-restapi/
+
+//crear arhico package.json
+$ npm init -y
+
+$ npm i express
+
+$ npm i typescript -D
+
+//crear archivo tsconfig.json para decir al proyecto donde estan arhivos fuente y de salida
+$ npx tsc --init
+
+//modificar el archivo tsconfig.json
+"outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+"rootDir": "./src",                                  /* Specify the root folder within your source files. */
+
+//compilar el código
+$ npx tsc
+
+//ejecutar archivo
+node dist/index.js
+
+//modulo para evitar estar compilando cada que hay cambios en el codigo
+//-D como depedencia de desarrollo, cada que cambiamos algo se compila y cambia solo
+npm i ts-node-dev -D
+
+//modificar el arhivos package.json
+"scripts": {
+    "dev": "ts-node-dev --respawn src/index.ts"
+  },
+
+//ejecutar en consola
+npm run dev
+
+//hasta aqui ya se configuro typescript
+
+//instalar modulos para crear un servidor
+//morgan permite ver en consola las peticiones GET, POST, PUT, DELETE, etc.
+//corns habilita la comunicación con servidores externos
+npm i express morgan cors
+
+//agregar los tipos de datos de express para typescript
+npm i @types/express -D
+
+//agregar tipos de datos de morgan y corns
+npm i @types/morgan @types/cors -D
+
+//instalar typeorm, revisar documentacion en typeorm.io
+Install the npm package:
+npm install typeorm --save
+
+//You need to install reflect-metadata shim:
+npm install reflect-metadata --save
+
+//and import it somewhere in the global place of your app (for example in app.ts):
+//para este proyecto es index.ts
+import "reflect-metadata"
+
+//You may need to install node typings:
+npm install @types/node --save-dev
+
+//for PostgreSQL or CockroachDB
+npm install pg --save
+
+//en tsconfig.json descomentar
+
+"experimentalDecorators": true
+
+//con esto las propiedades no requieren inicialización
+"strictPropertyInitialization": false,
+"emitDecoratorMetadata": true,
+
+//instalar en visual studio code la extension thunder client
+//para pruebas: post, get, create, delete
+
+//peticion post users
+{
+  "nombre": "Harim",
+  "ap_paterno": "Castellanos",
+  "ap_materno": "Altamirano",
+  "activo": true,
+  "fechaCreado": "19-04-2024 09:43",
+  "fechaActualizado": "19-04-2024 09:43"
+}

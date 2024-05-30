@@ -1,0 +1,8 @@
+
+drop table empleado
+drop table vale
+drop table area
+drop table public."user"
+drop table edificio
+
+
